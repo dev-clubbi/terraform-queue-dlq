@@ -11,15 +11,8 @@ variable "topics" {
   type = list(object({
     name                 = string
     raw_message_delivery = bool
-    max_retry            = number
   }))
-  default = [
-    {
-      name                 = "teste-ale-cloudwatch"
-      raw_message_delivery = true
-      max_retry            = 2
-    }
-  ]
+  default = []
 }
 
 variable "max_retry" {
