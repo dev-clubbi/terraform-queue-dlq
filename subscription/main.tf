@@ -14,7 +14,11 @@ resource "aws_sqs_queue_policy" "queue_policy" {
       "Sid": "First",
       "Effect": "Allow",
       "Principal": "*",
-      "Action": "sqs:SendMessage",
+      "Action": [
+        "sqs:SendMessage",
+        "sqs:ReceiveMessage",
+        "sqs:DeleteMessage"
+      ],
       "Resource": "${data.aws_sqs_queue.queue.arn}",
       "Condition": {
         "ArnEquals": {
@@ -32,4 +36,5 @@ resource "aws_sns_topic_subscription" "subscription" {
   protocol             = "sqs"
   topic_arn            = var.topic_arn
   raw_message_delivery = var.raw_message_delivery
+  filter_policy = jsonencode(var.filter_policy)
 }

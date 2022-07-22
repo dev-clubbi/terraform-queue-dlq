@@ -19,3 +19,21 @@ variable "max_retry" {
   type    = number
   default = 3
 }
+
+variable "filter_policy" {
+  type = object({})
+  default = {}
+}
+
+variable "tags" {
+  type = object({})
+  default = {}
+}
+
+variable "environment" {
+  type = string
+}
+
+variable "prefix" {
+  type = string
+}

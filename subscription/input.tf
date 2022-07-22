@@ -15,3 +15,8 @@ variable "raw_message_delivery" {
   type    = bool
   default = true
 }
+
+variable "filter_policy" {
+  type = object({})
+  default = {}
+}
