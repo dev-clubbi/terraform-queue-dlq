@@ -37,3 +37,8 @@ variable "environment" {
 variable "prefix" {
   type = string
 }
+
+variable "cloudwatch_alarm_name" {
+  type = string
+  default = "alerts_ops"
+}

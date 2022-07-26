@@ -1,5 +1,5 @@
 resource "aws_sns_topic" "cloud_watch_alarms" {
-  name = "${var.prefix}alerts_ops"
+  name =  "${var.prefix}${var.cloudwatch_alarm_name}"
   tags = var.tags
 }
 
