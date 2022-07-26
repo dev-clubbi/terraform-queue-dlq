@@ -21,12 +21,12 @@ variable "max_retry" {
 }
 
 variable "filter_policy" {
-  type = object({})
+  type = map(any)
   default = {}
 }
 
 variable "tags" {
-  type = object({})
+  type = map(any)
   default = {}
 }
 

@@ -17,6 +17,6 @@ variable "raw_message_delivery" {
 }
 
 variable "filter_policy" {
-  type = object({})
+  type = map(any)
   default = {}
 }

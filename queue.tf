@@ -27,12 +27,15 @@ module "subscription" {
   source    = "./subscription"
   topic_arn = join("",
     [
-      each.value.name
+      can(regex("^arn:aws:sns", each.value.name)) ?
+      each.value.name :
+      "arn:aws:sns:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${each.value.name}"
     ]
   )
   queue_name           = aws_sqs_queue.queue.name
   raw_message_delivery = each.value.raw_message_delivery
   depends_on           = [aws_sqs_queue.queue]
+  filter_policy = var.filter_policy
 }
 
 resource "aws_cloudwatch_metric_alarm" "create_order_dlq_error" {
@@ -55,4 +58,3 @@ resource "aws_cloudwatch_metric_alarm" "create_order_dlq_error" {
   evaluation_periods = 1
   count = var.environment == "local" ? 0: 1
 }
-
