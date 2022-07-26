@@ -20,6 +20,7 @@ module "my_new_queue" {
   }
   environment = local.environment
   prefix = local.prefix
+  cloudwatch_alarm_name = "alerts_ops"
 }
 ```
 
