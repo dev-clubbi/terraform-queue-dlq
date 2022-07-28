@@ -1,6 +1,6 @@
 # SNS to SQS with DLQ
 
-This project allows you to create a SQS queue with DLQ and subscribe it to an SNS topic.
+This project allows to create a SQS queue with DLQ and subscribe it to a SNS topic.
 
 Currently, it does not support cross region subscription. [Link to issue](https://github.com/hashicorp/terraform/issues/24476).
 
