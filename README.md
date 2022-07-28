@@ -24,4 +24,5 @@ module "my_new_queue" {
 }
 ```
 
-The `topics[n].name` var can be an ARN string as well as a topic name string.
+- The `topics[n].name` var can be an ARN string as well as a topic name string.
+- The `filter_policy` will only work when the key-value pair is contained inside SQS message attributes. It will **NOT** work if the key-value is inside the message.
