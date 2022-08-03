@@ -1,8 +1,3 @@
-resource "aws_sns_topic" "cloud_watch_alarms" {
-  name =  "${var.prefix}${var.cloudwatch_alarm_name}"
-  tags = var.tags
-}
-
 resource "aws_sqs_queue" "dlq" {
   name = "${var.queue_name}_dlq"
 }
@@ -52,9 +47,6 @@ resource "aws_cloudwatch_metric_alarm" "create_order_dlq_error" {
   dimensions = {
     QueueName = aws_sqs_queue.dlq.name
   }
-  alarm_actions = [
-    aws_sns_topic.cloud_watch_alarms.arn
-  ]
   evaluation_periods = 1
   count = var.environment == "local" ? 0: 1
 }
